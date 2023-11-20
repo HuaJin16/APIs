@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="#" alt="cat">
+    <script>
+        // selecting image and assigning it to a variable
+        const img = document.querySelector('img');
+        fetch('https://api.giphy.com/v1/gifs/translate?api_key=X47G2Le0PvHMvvsHojxF1WMbRG7e4DCZ&s=cats', {mode: 'cors'})
+            // returns a promise; creates a response object for JSON encoded data
+            .then(function(response) {
+                return response.json()
+            })
+            // grabs the data we want and links it to our img variable 
+            .then(function(response) {
+                img.src = response.data.images.original.url;
+            });
+    </script>
+</body>
+</html>
